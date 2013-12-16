@@ -69,12 +69,10 @@
     </ApplicationDefinition>
     <Compile Include="Entitites\TMProcess.cs" />
     <Compile Include="Model\ProcessesModel.cs" />
-    <Compile Include="ViewModel\MainViewModel.cs" />
     <Compile Include="ViewModel\Processes.xaml.cs">
       <DependentUpon>Processes.xaml</DependentUpon>
     </Compile>
     <Compile Include="ViewModel\ProcessViewModel.cs" />
-    <Compile Include="ViewModel\ViewModelLocator.cs" />
     <Page Include="MainWindow.xaml">
       <Generator>MSBuild:Compile</Generator>
       <SubType>Designer</SubType>

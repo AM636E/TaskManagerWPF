@@ -6,21 +6,29 @@
         xmlns:MvvmLight="clr-namespace:GalaSoft.MvvmLight.Command;assembly=GalaSoft.MvvmLight.Extras.WPF45"
         xmlns:interactivity="clr-namespace:System.Windows.Interactivity;assembly=System.Windows.Interactivity"
         DataContext="{Binding Source={StaticResource ResourceKey=Processes}}">
-    
+
     <Grid Name="_mainGrid">
-        
-        <DataGrid ItemsSource="{Binding Path=Processes, ValidatesOnDataErrors=True}" AutoGenerateColumns="False" IsEnabled="True" Name="_processes">
+        <Grid.ColumnDefinitions>
+            <ColumnDefinition Width="290*"/>
+            <ColumnDefinition Width="227*"/>
+        </Grid.ColumnDefinitions>
+
+        <Button Content="TestButton" Grid.ColumnSpan="2">
             <interactivity:Interaction.Triggers>
                 <interactivity:EventTrigger EventName="Click">
                     <MvvmLight:EventToCommand
                         Command="{Binding Path=KillProcessCommand}"
                         CommandParameter="{Binding ElementName=_processes, Path=SelectedItem}"
-                        >                        
+                        >
                     </MvvmLight:EventToCommand>
                 </interactivity:EventTrigger>
             </interactivity:Interaction.Triggers>
+        </Button>
+
+        <DataGrid ItemsSource="{Binding Path=Processes, ValidatesOnDataErrors=True, Mode=TwoWay}" IsReadOnly="False" AutoGenerateColumns="False" IsEnabled="True" Name="_processes" Margin="0,96,0,-96" Grid.ColumnSpan="2">
+
             <DataGrid.Columns>
-                
+
                 <DataGridTemplateColumn Header="pid" Width="SizeToCells" IsReadOnly="False">
                     <DataGridTemplateColumn.CellTemplate>
                         <DataTemplate>
@@ -43,10 +51,10 @@
                             <TextBlock Text="{Binding MainWindowTitle}"></TextBlock>
                         </DataTemplate>
                     </DataGridTemplateColumn.CellTemplate>
-                </DataGridTemplateColumn>              
+                </DataGridTemplateColumn>
 
             </DataGrid.Columns>
-            
+
         </DataGrid>
     </Grid>
 </Window>

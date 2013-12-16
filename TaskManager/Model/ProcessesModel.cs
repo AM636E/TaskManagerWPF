@@ -14,7 +14,12 @@ namespace TaskManager.Model
 
         public ObservableCollection<Process> Processes
         {
-            get { return _processes; }
+            get 
+            {
+                _processes.CollectionChanged += (o, e) => { System.Windows.MessageBox.Show("Changed"); };
+                return _processes; 
+            }
+            set { _processes = value; }
         }
 
         public ProcessModel()
@@ -24,10 +29,6 @@ namespace TaskManager.Model
 
         public void Load()
         {
-            /*_processes = (ObservableCollection<Process>)
-                         (from p in Process.GetProcesses()
-                          select p).AsEnumerable<Process>();*/
-
             foreach(Process p in Process.GetProcesses())
             {
                 _processes.Add(p);

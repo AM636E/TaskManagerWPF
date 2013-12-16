@@ -16,7 +16,7 @@ namespace TaskManager.ViewModel
 {
     class ProcessViewModel : ViewModelBase
     {
-        private ProcessModel _model = new ProcessModel();
+        private ProcessModel _model;
 
         public ProcessViewModel()
         {
@@ -28,8 +28,9 @@ namespace TaskManager.ViewModel
 
         private void KillProcess(Process p)
         {
-            Process process = Process.GetCurrentProcess();
-            MessageBox.Show(process.ToString());
+            p.Kill();
+            _model.Load();
+            
         }
 
         public RelayCommand<Process> KillProcessCommand
@@ -38,9 +39,13 @@ namespace TaskManager.ViewModel
             set;
         }
 
+        //public static DependencyProperty ProcessesProperty = DependencyProperty.Register
+        //    ("Processes", typeof(ObservableCollection<Process>), typeof(ProcessViewModel));
+
         public ObservableCollection<Process> Processes
         {
-            get { return _model.Processes; }
+            get { return _model.Processes;  }
+            set { _model.Processes = value; }
         }
 
         public void ShowAllProcesses()
