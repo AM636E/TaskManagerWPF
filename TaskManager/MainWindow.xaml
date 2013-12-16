@@ -4,7 +4,38 @@
         Title="MainWindow" Height="350" Width="525"
         xmlns:ViewModel="clr-namespace:TaskManager.ViewModel"
         DataContext="{Binding Source={StaticResource ResourceKey=Processes}}">
+ 
     <Grid Name="_mainGrid">
-        <ViewModel:ProcessesControl Processes="{StaticResource ResourceKey=Processes}" />
+        <DataGrid ItemsSource="{Binding Path=Processes, ValidatesOnDataErrors=True}" AutoGenerateColumns="False" IsEnabled="True" Name="_processes">
+
+            <DataGrid.Columns>
+                
+                <DataGridTemplateColumn Header="Id" Width="SizeToCells" IsReadOnly="False">
+                    <DataGridTemplateColumn.CellTemplate>
+                        <DataTemplate>
+                            <TextBlock Text="{Binding Id}"></TextBlock>
+                        </DataTemplate>
+                    </DataGridTemplateColumn.CellTemplate>
+                </DataGridTemplateColumn>
+
+                <DataGridTemplateColumn Header="Name" Width="SizeToCells" IsReadOnly="False">
+                    <DataGridTemplateColumn.CellTemplate>
+                        <DataTemplate>
+                            <TextBlock Text="{Binding ProcessName}"></TextBlock>
+                        </DataTemplate>
+                    </DataGridTemplateColumn.CellTemplate>
+                </DataGridTemplateColumn>
+
+                <DataGridTemplateColumn Header="MainWindow" Width="100" IsReadOnly="False">
+                    <DataGridTemplateColumn.CellTemplate>
+                        <DataTemplate>
+                            <TextBlock Text="{Binding MainWindowTitle}"></TextBlock>
+                        </DataTemplate>
+                    </DataGridTemplateColumn.CellTemplate>
+                </DataGridTemplateColumn>              
+
+            </DataGrid.Columns>
+            
+        </DataGrid>
     </Grid>
 </Window>
