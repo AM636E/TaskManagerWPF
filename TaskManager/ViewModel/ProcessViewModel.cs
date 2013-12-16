@@ -23,14 +23,14 @@ namespace TaskManager.ViewModel
             _model = new ProcessModel();
             _model.Load();
 
-            KillProcessCommand = new RelayCommand<Process>(KillProcess);            
+            KillProcessCommand = new RelayCommand<Process>(KillProcess);
+            LoadCommand = new RelayCommand((Action)(() => { _model.Load(); MessageBox.Show("asdf"); }));
         }
 
         private void KillProcess(Process p)
         {
             p.Kill();
-            _model.Load();
-            
+            _model.Load();            
         }
 
         public RelayCommand<Process> KillProcessCommand
@@ -39,9 +39,20 @@ namespace TaskManager.ViewModel
             set;
         }
 
+        public RelayCommand LoadCommand
+        {
+            get;
+            set;
+        }
+
         public ObservableCollection<Process> Processes
         {
             get { return _model.Processes;  }
+        }
+
+        private void _LoadProcesses()
+        {
+            _model.Load();
         }
 
         public void ShowAllProcesses()

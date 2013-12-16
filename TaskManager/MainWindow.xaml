@@ -12,7 +12,7 @@
             <ColumnDefinition Width="290*"/>
             <ColumnDefinition Width="227*"/>
         </Grid.ColumnDefinitions>
-
+        <StackPanel>
         <Button Content="TestButton" Grid.ColumnSpan="2">
             <interactivity:Interaction.Triggers>
                 <interactivity:EventTrigger EventName="Click">
@@ -24,6 +24,16 @@
                 </interactivity:EventTrigger>
             </interactivity:Interaction.Triggers>
         </Button>
+            <Button Content="Test 2" >
+                <interactivity:Interaction.Triggers>
+                    <interactivity:EventTrigger EventName="Click">
+                        <MvvmLight:EventToCommand
+                                                Command="{Binding Path=LoadCommand}"
+                            ></MvvmLight:EventToCommand>
+                    </interactivity:EventTrigger>
+                </interactivity:Interaction.Triggers>                
+            </Button>
+        </StackPanel>
 
         <DataGrid ItemsSource="{Binding Path=Processes, ValidatesOnDataErrors=True}" AutoGenerateColumns="False" Name="_processes" Margin="0,96,0,-96" Grid.ColumnSpan="2">
 
