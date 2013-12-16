@@ -39,9 +39,6 @@ namespace TaskManager.ViewModel
             set;
         }
 
-        //public static DependencyProperty ProcessesProperty = DependencyProperty.Register
-        //    ("Processes", typeof(ObservableCollection<Process>), typeof(ProcessViewModel));
-
         public ObservableCollection<Process> Processes
         {
             get { return _model.Processes;  }

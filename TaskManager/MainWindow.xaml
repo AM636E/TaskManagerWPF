@@ -25,7 +25,7 @@
             </interactivity:Interaction.Triggers>
         </Button>
 
-        <DataGrid ItemsSource="{Binding Path=Processes, ValidatesOnDataErrors=True, Mode=TwoWay}" IsReadOnly="False" AutoGenerateColumns="False" IsEnabled="True" Name="_processes" Margin="0,96,0,-96" Grid.ColumnSpan="2">
+        <DataGrid ItemsSource="{Binding Path=Processes, ValidatesOnDataErrors=True}" AutoGenerateColumns="False" Name="_processes" Margin="0,96,0,-96" Grid.ColumnSpan="2">
 
             <DataGrid.Columns>
 
