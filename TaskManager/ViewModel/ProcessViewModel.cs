@@ -5,6 +5,7 @@ using System.Text;
 using System.Threading.Tasks;
 using System.Diagnostics;
 using System.Collections.ObjectModel;
+using System.Windows;
 
 using GalaSoft.MvvmLight;
 using GalaSoft.MvvmLight.Command;
@@ -21,7 +22,14 @@ namespace TaskManager.ViewModel
         {
             _model = new ProcessModel();
             _model.Load();
-            
+
+            KillProcessCommand = new RelayCommand<Process>(KillProcess);            
+        }
+
+        private void KillProcess(Process p)
+        {
+            Process process = Process.GetCurrentProcess();
+            MessageBox.Show(process.ToString());
         }
 
         public RelayCommand<Process> KillProcessCommand

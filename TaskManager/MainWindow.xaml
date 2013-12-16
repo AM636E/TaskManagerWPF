@@ -3,14 +3,25 @@
         xmlns:x="http://schemas.microsoft.com/winfx/2006/xaml"
         Title="MainWindow" Height="350" Width="525"
         xmlns:ViewModel="clr-namespace:TaskManager.ViewModel"
+        xmlns:MvvmLight="clr-namespace:GalaSoft.MvvmLight.Command;assembly=GalaSoft.MvvmLight.Extras.WPF45"
+        xmlns:interactivity="clr-namespace:System.Windows.Interactivity;assembly=System.Windows.Interactivity"
         DataContext="{Binding Source={StaticResource ResourceKey=Processes}}">
- 
+    
     <Grid Name="_mainGrid">
+        
         <DataGrid ItemsSource="{Binding Path=Processes, ValidatesOnDataErrors=True}" AutoGenerateColumns="False" IsEnabled="True" Name="_processes">
-
+            <interactivity:Interaction.Triggers>
+                <interactivity:EventTrigger EventName="Click">
+                    <MvvmLight:EventToCommand
+                        Command="{Binding Path=KillProcessCommand}"
+                        CommandParameter="{Binding ElementName=_processes, Path=SelectedItem}"
+                        >                        
+                    </MvvmLight:EventToCommand>
+                </interactivity:EventTrigger>
+            </interactivity:Interaction.Triggers>
             <DataGrid.Columns>
                 
-                <DataGridTemplateColumn Header="Id" Width="SizeToCells" IsReadOnly="False">
+                <DataGridTemplateColumn Header="pid" Width="SizeToCells" IsReadOnly="False">
                     <DataGridTemplateColumn.CellTemplate>
                         <DataTemplate>
                             <TextBlock Text="{Binding Id}"></TextBlock>
@@ -18,7 +29,7 @@
                     </DataGridTemplateColumn.CellTemplate>
                 </DataGridTemplateColumn>
 
-                <DataGridTemplateColumn Header="Name" Width="SizeToCells" IsReadOnly="False">
+                <DataGridTemplateColumn Header="name" Width="SizeToCells" IsReadOnly="False">
                     <DataGridTemplateColumn.CellTemplate>
                         <DataTemplate>
                             <TextBlock Text="{Binding ProcessName}"></TextBlock>
@@ -26,7 +37,7 @@
                     </DataGridTemplateColumn.CellTemplate>
                 </DataGridTemplateColumn>
 
-                <DataGridTemplateColumn Header="MainWindow" Width="100" IsReadOnly="False">
+                <DataGridTemplateColumn Header="MainWindow" Width="SizeToCells" IsReadOnly="False">
                     <DataGridTemplateColumn.CellTemplate>
                         <DataTemplate>
                             <TextBlock Text="{Binding MainWindowTitle}"></TextBlock>
