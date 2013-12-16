@@ -10,29 +10,7 @@
 
             <DataGrid.Columns>
                 
-                <DataGridTemplateColumn Header="Id" Width="SizeToCells" IsReadOnly="False">
-                    <DataGridTemplateColumn.CellTemplate>
-                        <DataTemplate>
-                            <TextBlock Text="{Binding Id}"></TextBlock>
-                        </DataTemplate>
-                    </DataGridTemplateColumn.CellTemplate>
-                </DataGridTemplateColumn>
-
-                <DataGridTemplateColumn Header="Name" Width="SizeToCells" IsReadOnly="False">
-                    <DataGridTemplateColumn.CellTemplate>
-                        <DataTemplate>
-                            <TextBlock Text="{Binding ProcessName}"></TextBlock>
-                        </DataTemplate>
-                    </DataGridTemplateColumn.CellTemplate>
-                </DataGridTemplateColumn>
-
-                <DataGridTemplateColumn Header="MainWindow" Width="100" IsReadOnly="False">
-                    <DataGridTemplateColumn.CellTemplate>
-                        <DataTemplate>
-                            <TextBlock Text="{Binding MainWindowTitle}"></TextBlock>
-                        </DataTemplate>
-                    </DataGridTemplateColumn.CellTemplate>
-                </DataGridTemplateColumn>              
+                <DataGridTextColumn Header="Id" Binding="{Binding Path=Processes}"></DataGridTextColumn>              
 
             </DataGrid.Columns>
             
