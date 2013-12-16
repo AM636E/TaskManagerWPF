@@ -42,7 +42,6 @@ namespace TaskManager.ViewModel
         public ObservableCollection<Process> Processes
         {
             get { return _model.Processes;  }
-            set { _model.Processes = value; }
         }
 
         public void ShowAllProcesses()
